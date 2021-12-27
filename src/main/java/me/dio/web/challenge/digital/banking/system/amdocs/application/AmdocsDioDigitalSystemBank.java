@@ -97,10 +97,10 @@ public class AmdocsDioDigitalSystemBank {
 
         maria.getAccounts().add(mariaSavingsAccount);
 
-        manuelCurrenteAccount.deposit(manuelCurrenteAccount, 1000d);
-        manuelCurrenteAccount.withdraw(manuelCurrenteAccount, 150d);
-        manuelCurrenteAccount.transfer(manuelCurrenteAccount, pedroCurrenteAccount, 200);
-        manuelCurrenteAccount.internationalTransfer(worldBank ,manuelCurrenteAccount, mariaSavingsAccount, 500d);
+        manuelCurrenteAccount.deposit(1000d);
+        manuelCurrenteAccount.withdraw(150d);
+        manuelCurrenteAccount.transfer(pedroCurrenteAccount, 200);
+        manuelCurrenteAccount.internationalTransfer(worldBank , mariaSavingsAccount, 500d);
 
         System.out.println("\nBank statement - Client: "+manuelCurrenteAccount.getClient().getName());
         manuelCurrenteAccount.getHistory().entrySet().forEach(System.out::println);
