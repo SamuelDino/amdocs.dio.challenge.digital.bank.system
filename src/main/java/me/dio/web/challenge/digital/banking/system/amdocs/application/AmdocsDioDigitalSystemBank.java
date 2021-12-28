@@ -1,9 +1,11 @@
 package me.dio.web.challenge.digital.banking.system.amdocs.application;
 
+import me.dio.web.challenge.digital.banking.system.amdocs.connector.HGBrasilConnector;
 import me.dio.web.challenge.digital.banking.system.amdocs.entities.*;
 
 public class AmdocsDioDigitalSystemBank {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+
         Coin dollar = new Coin("Dollar", "US$");
         Coin real = new Coin("Real", "R$");
         Coin euro = new Coin("Euro", "€");
@@ -13,8 +15,10 @@ public class AmdocsDioDigitalSystemBank {
         worldBank.setStandardCoin(dollar);
 
         worldBank.addQuotation(dollar, 1d);
-        worldBank.addQuotation(real, 0.18d);
-        worldBank.addQuotation(euro, 1.13d);
+        String USD = "https://api.hgbrasil.com/finance?array_limit=1&fields=USD,currencies&key=2727be2f";
+        String EUR = "https://api.hgbrasil.com/finance?array_limit=1&fields=EUR,currencies&key=2727be2f";
+        worldBank.addQuotation(real, 1/HGBrasilConnector.findQuotations(USD));
+        worldBank.addQuotation(euro, HGBrasilConnector.findQuotations(EUR)/HGBrasilConnector.findQuotations(USD));
 
         Country brasil = Country.builder()
                 .name("Brasil")

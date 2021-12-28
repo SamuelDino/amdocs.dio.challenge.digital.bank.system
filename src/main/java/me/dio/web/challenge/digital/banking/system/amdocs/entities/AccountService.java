@@ -9,6 +9,6 @@ public interface AccountService {
 
     void transfer(final Account destinyAccount, final double amount);
 
-    void internationalTransfer(final WorldBank worldBank, final Account destinyAccount, final double amount);
+    void internationalTransfer(final WorldBank worldBank, final Account destinyAccount, final double amount) throws Exception;
 
 }

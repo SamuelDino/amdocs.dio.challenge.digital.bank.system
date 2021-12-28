@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
+import me.dio.web.challenge.digital.banking.system.amdocs.connector.HGBrasilConnector;
 
 import java.util.*;
 
@@ -17,7 +18,7 @@ public class WorldBank extends Bank {
     private List<CentralBank> centralBanks = new ArrayList<>();
     private Map<Coin, Double> quotations = new HashMap<>();
 
-    public double exchange(final Coin originCoin, final Coin destinyCoin, final Double amount) {
+    public double exchange(final Coin originCoin, final Coin destinyCoin, final Double amount) throws Exception {
         double exchangedValue = -1d;
         if (!quotations.get(originCoin).isNaN() && !quotations.get(destinyCoin).isNaN()) {
             exchangedValue = amount * quotations.get(originCoin);

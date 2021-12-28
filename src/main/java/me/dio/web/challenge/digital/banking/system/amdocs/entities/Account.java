@@ -53,7 +53,7 @@ public abstract class Account implements AccountService{
         }
     }
     @Override
-    public void internationalTransfer(final WorldBank worldBank, final Account destinyAccount, final double amount) {
+    public void internationalTransfer(final WorldBank worldBank, final Account destinyAccount, final double amount) throws Exception {
         if (amount - this.getBank().getCentralBank().getExchangeRate() > 0) {
             if (this.getBank().getCentralBank() != destinyAccount.getBank().getCentralBank()) {
                 final double exchangedAmount = worldBank
