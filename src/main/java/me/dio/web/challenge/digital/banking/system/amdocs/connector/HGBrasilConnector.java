@@ -9,7 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class HGBrasilConnector {
-    static int successCode = 200;
+    static final int SUCCESS_CODE = 200;
 
     public static double findQuotations(String urlToCall) throws Exception {
 
@@ -18,7 +18,7 @@ public class HGBrasilConnector {
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
 
-            if (connection.getResponseCode() != successCode)
+            if (connection.getResponseCode() != SUCCESS_CODE)
                 throw new RuntimeException("HTTP error code : " + connection.getResponseCode());
 
             BufferedReader response = new BufferedReader(new InputStreamReader((connection.getInputStream())));
